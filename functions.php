@@ -4,13 +4,14 @@
 function calculateDaysDifference($start_date, $end_date) {
     
     // Convert the dates to timestamps
-    $start_timestamp = strtotime($start_date);
-    $end_timestamp = strtotime($end_date);
+    $start_timestamp = new DateTime($start_date);
+    $end_timestamp = new DateTime($end_date);
 
     // Calculate the difference in seconds and then convert to days
-    $difference_in_seconds = $end_timestamp - $start_timestamp;
-    $days_difference = $difference_in_seconds / (60 * 60 * 24);
+    $difference_in_seconds = $start_timestamp->diff ($end_timestamp);
 
-    return $days_difference;
+    return $difference_in_seconds;
+
 }
+
 ?>

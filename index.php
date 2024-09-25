@@ -64,11 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $days_difference = calculateDaysDifference($invoice_date, $expiration_date);
 
     // Display a message based on whether the expiration date is in the past or future
-    if ($days_difference < 0) {
-        echo "The expiration date has passed by " . abs($days_difference) . " days.";
+    if ($days_difference->invert ) {
+        echo "The expiration date has passed by " . abs($days_difference->d) . " days.";
     } else {
-        echo "The expiration date is in " . $days_difference . " days.";
+        echo "The expiration date is in " . $days_difference->d . " days.";
     }
+
 }
 ?>
     <h1>Check Invoice and Expiration Date</h1>
